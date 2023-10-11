@@ -1,9 +1,6 @@
 # This is a sample Python script.
 import numpy as np
 
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 def calculate_gcd(a, b):
     while b:
         a, b = b, a % b
@@ -36,10 +33,5 @@ def calculate_multiple_cmmdc():
     else:
         print("you didn't enter the numbers!")
 
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     calculate_multiple_cmmdc()
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
