@@ -5,4 +5,4 @@ def new_case(str):
                     else i for i in str]).lstrip('_')
 
 if __name__ == '__main__':
-    new_case("AmMersLa")
+    print(new_case("AmMersLaMare"))
