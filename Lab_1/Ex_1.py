@@ -1,4 +1,3 @@
-# This is a sample Python script.
 import numpy as np
 
 def calculate_gcd(a, b):
