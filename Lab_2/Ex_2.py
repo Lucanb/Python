@@ -1,24 +1,27 @@
 import numpy as np
 
-def is_prime(number):
-    if number <= 1:
+def is_prime(n):
+    if n <= 1:
         return False
-    if number <= 3:
+    if n <= 3:
         return True
-    if number % 2 == 0 or number % 3 == 0:
+    if n % 2 == 0 or n % 3 == 0:
         return False
     i = 5
-    while i * i <= number:
-        if number % i == 0 or number % (i + 2) == 0:
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
             return False
         i += 6
     return True
 
-def find_primes(numbers):
-    prime_numbers = [num for num in numbers if is_prime(num)]
-    return prime_numbers
-
+def list_primes(numbers):
+    primes = [i for i in numbers if is_prime(i)]
+    return primes
 
 if __name__ == '__main__':
+    n = int(input("Enter number of elements : "))
 
-    find_primes(numbers)
+    numbers =list(map(int, 
+    input("\nEnter the numbers : ").strip().split()))[:n]
+    prime_numbers = list_primes(numbers)
+    print(prime_numbers)
