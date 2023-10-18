@@ -6,8 +6,8 @@ def pers_obs(mat):
             height = mat[i][j]
             verif = False
 
-            for k in range(i + 1, len(mat)):
-                if mat[k][j] > height:
+            for k in range(i):
+                if mat[k][j] >= height:
                     verif = True
                     break
 
