@@ -24,7 +24,7 @@ def Compare_Dictionaries(dict_a, dict_b):
 
     return True
 
-if __name__ == '__main':
+if __name__ == '__main__':
   dict1 = {"a": 1, "b": [2, 3, {"c": 4}], "d": {"e": 5}}
   dict2 = {"a": 1, "b": [2, 3, {"c": 4}], "d": {"e": 5}}
   dict3 = {"a": 1, "b": [2, 3, {"c": 4}], "d": {"e": 7}}
