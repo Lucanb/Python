@@ -33,3 +33,12 @@ if __name__ == '__main__':
 result1 = Compare_Dictionaries(dict1, dict2)
 
 print(result1)
+
+
+
+
+# dict1 = {"a": 1, "b": [2, 3, {"c": 4}], "d": {"e": 5}}
+# dict2 = {"a": 1, "b": [2, 3, {"c": 4}], "d": {"e": 5}}
+ 
+# result1 = all((dict1.get(k) == v for k, v in dict2.items()))
+# print(result1)
