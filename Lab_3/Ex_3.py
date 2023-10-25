@@ -29,7 +29,7 @@ def Compare_Dictionaries(dict_a,dict_b):
 if __name__ == '__main__':
   dict1 = {"a": 1, "b": [2, 3, {"c": 4}], "d": {"e": 5}}
   dict2 = {"a": 1, "b": [2, 3, {"c": 4}], "d": {"e": 5}}
-  dict3 = {"a": 1, "b": [2, 3, {"c": 4}], "d": {"e": 6}}
+  dict3 = {"a": 1, "b": [2, 3, {"c": 4}], "d": {"f": 5}}
 
 result1 = Compare_Dictionaries(dict1, dict2)
 result2 = Compare_Dictionaries(dict1, dict3)

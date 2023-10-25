@@ -4,7 +4,7 @@ def Create_dictionr_Word(string):
     dict = {}
     for letter in string:
         if letter.isalnum():
-            letter = letter.lower()
+            #letter = letter.lower()
 
             if letter in dict:
                 dict[letter] = dict[letter] + 1

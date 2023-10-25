@@ -4,11 +4,11 @@ def duplicateCount(list):
     
     for item in list:
         if list.count(item) > 1:
-            unqEl.add(item)
+            duplicateEl.add(item)
         else:
             unqEl.add(item)
-    
-    return len(unqEl), len(unqEl)
+
+    return len(unqEl), len(duplicateEl)
 
 if __name__ == '__main__':
     numberList = [1, 2, 2, 3, 4, 4, 5, 6, 6, 7]
