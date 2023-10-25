@@ -17,7 +17,7 @@ def Compare_Dictionaries(dict_a,dict_b):
              for i in range(len(dict_a[key])):
                 if not Compare_Dictionaries(dict_a[key][i], dict_b[key][i]):
                     return False
-            elif type_a == dict:
+            elif type_a is dict:
                  if not Compare_Dictionaries(dict_a[key], dict_b[key]):
                     return False
 
