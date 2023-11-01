@@ -43,7 +43,7 @@ class Matrix:
     def __str__(self):
         result = ""
         for i in range(self.rows):
-            result += " | ".join(map(str, self.mat[i])) + "\n"
+            result += "    ".join(map(str, self.mat[i])) + "\n" + "\n"
         return result
 
 
