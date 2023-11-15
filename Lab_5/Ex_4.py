@@ -25,7 +25,7 @@ class Engineer(Employee):
         self.programming_language = programming_language
 
     def display_info(self):
-        return f"{super().display_info()}, {self.salary}, Engineer specializing in {self.programming_language}"
+        return f"{super().display_info()}, {self.salary}, Engineer specialized in {self.programming_language}"
 
     def write_code(self):
         return f"Writing code in {self.programming_language}"
