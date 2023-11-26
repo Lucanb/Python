@@ -6,6 +6,9 @@ class Vehicle:
 
     def display_info(self):
         return f"{self.year} {self.make} {self.model}"
+    
+    def calculate_towing_capacity(self):
+        pass
 
 class Car(Vehicle):
     def __init__(self, make, model, year, fuel_efficiency):
