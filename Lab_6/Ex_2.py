@@ -8,7 +8,13 @@ def rename_files(directory_path):
 
         files = os.listdir(directory_path) 
         for index,file_name in enumerate(files):
-             new_filename = f"file{index}{os.path.splitext(file_name)[0]}"   
+             extension = os.path.splitext(file_name)[1]
+             new_filename = f"file{index}{os.path.splitext(file_name)[0]}"
+            #  new_filename = f"file{index}"
+            #  new_filename = f"{index}{os.path.splitext(file_name)[0]}"
+            #  new_filename = f"{os.path.splitext(file_name)[0]}{index}"
+             new_filename += extension
+             print(new_filename)   
              old_path = os.path.join(directory_path, file_name)
              new_path = os.path.join(directory_path, new_filename)
              try:
