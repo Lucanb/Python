@@ -1,0 +1,1 @@
+print('Aritmetic Package initiaised')
