@@ -50,11 +50,11 @@ def create_invitations_table(cursor):
 def creeateTabels():
     try:
         connection = psycopg2.connect(
-            host="localhost",
-            database="meetingscheduler",
-            user="lucanb",
-            password="student",
-            port='5432'
+            database = "meetingscheduler",
+            user = "postgres",
+            password='UFDHGEQS0727156236321', 
+            host='127.0.0.1', 
+            port= '5432'
         )
 
         cursor = connection.cursor()

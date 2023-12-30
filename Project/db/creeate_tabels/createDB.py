@@ -1,9 +1,9 @@
 import psycopg2
 
 connection = psycopg2.connect(
-    database = "postgres",
+    database = "meetingscheduler",
     user = "postgres",
-    password='student', 
+    password='UFDHGEQS0727156236321', 
     host='127.0.0.1', 
     port= '5432'
 )
