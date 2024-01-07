@@ -1,5 +1,5 @@
 import triggers_init.triggersComands as commands
-import handler.connectDB as conn
+import connectDB as conn
 
 
 class myTriggers:

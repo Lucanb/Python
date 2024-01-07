@@ -1,4 +1,4 @@
-import handler.connectDB as conn
+import connectDB as conn
 import create_tabels.tabelComands as commands
 
 class MyTabels:
