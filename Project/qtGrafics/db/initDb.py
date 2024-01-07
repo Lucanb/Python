@@ -1,4 +1,4 @@
-import creeate_tabels.createTabels as tables
+import create_tabels.createTabels as tables
 import triggers_init.initTriggers as triggers
 
 tabels  = tables.MyTabels()

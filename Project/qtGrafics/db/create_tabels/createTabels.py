@@ -1,5 +1,5 @@
-import connectDB as conn
-import creeate_tabels.tabelComands as commands
+import handler.connectDB as conn
+import create_tabels.tabelComands as commands
 
 class MyTabels:
     def __init__(self):

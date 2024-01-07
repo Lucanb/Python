@@ -1,5 +1,5 @@
 import psycopg2
-import handlers.meetingsComands as comands
+import db.handler.meetingsComands as comands
 import db.connectDB as conn
 from datetime import datetime
 

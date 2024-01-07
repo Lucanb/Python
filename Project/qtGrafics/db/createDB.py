@@ -3,7 +3,7 @@ import psycopg2
 
 def create_my_dataBase():
     connection = psycopg2.connect(
-        database = "meetingscheduler",
+        database = "postgres",
         user = "postgres",
         password='UFDHGEQS0727156236321', 
         host='127.0.0.1', 

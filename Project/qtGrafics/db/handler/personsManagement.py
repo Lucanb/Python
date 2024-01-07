@@ -1,6 +1,6 @@
 import psycopg2
-import db.connectDB as conn
-import handlers.personsComands as commands
+import db.handler.connectDB as conn
+import db.handler.personsComands as commands
 import random
 
 class PersonManagement:

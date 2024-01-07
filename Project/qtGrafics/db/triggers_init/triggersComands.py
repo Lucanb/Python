@@ -45,7 +45,7 @@ BEGIN
     IF NOT EXISTS (
         SELECT 1 FROM personData WHERE personId = NEW.personId
     ) THEN
-        RAISE EXCEPTION 'Participantul cu ID % nu există', NEW.personId;
+        RAISE EXCEPTION 'Participantul cu ID % nu exista', NEW.personId;
     END IF;
     RETURN NEW;
 END;
@@ -61,7 +61,7 @@ CREATE OR REPLACE FUNCTION PastMeetingsAvoid()
 RETURNS TRIGGER AS $$
 BEGIN
     IF lower(NEW.hour_begin) < CURRENT_TIMESTAMP THEN
-        RAISE EXCEPTION 'Nu se pot programa întâlniri în trecut pentru întâlnirea cu ID %', NEW.meetingId;
+        RAISE EXCEPTION 'Nu se pot programa intalniri în trecut pentru intalnirea cu ID %', NEW.meetingId;
     END IF;
     RETURN NEW;
 END;
@@ -78,7 +78,7 @@ RETURNS TRIGGER AS $$
 BEGIN
     IF upper(NEW.hour_end) - lower(NEW.hour_begin) < interval '15 minutes' OR
        upper(NEW.hour_end) - lower(NEW.hour_begin) > interval '8 hours' THEN
-        RAISE EXCEPTION 'Durata întâlnirii nu este validă pentru întâlnirea cu ID %', NEW.meetingId;
+        RAISE EXCEPTION 'Durata intalnirii nu este valida pentru intalnirea cu ID %', NEW.meetingId;
     END IF;
     RETURN NEW;
 END;
@@ -96,7 +96,7 @@ BEGIN
     IF NOT EXISTS (
         SELECT 1 FROM meetingAppointments WHERE meetingId = NEW.meetingId
     ) THEN
-        RAISE EXCEPTION 'Întâlnirea cu ID % nu există', NEW.meetingId;
+        RAISE EXCEPTION 'intalnirea cu ID % nu exista', NEW.meetingId;
     END IF;
     RETURN NEW;
 END;
@@ -114,7 +114,7 @@ DECLARE
     participant_limit INT := 10;
 BEGIN
     IF (SELECT COUNT(*) FROM invitations WHERE meetingId = NEW.meetingId) >= participant_limit THEN
-        RAISE EXCEPTION 'Limita de participanți depășită pentru întâlnirea cu ID %', NEW.meetingId;
+        RAISE EXCEPTION 'Limita de participanti depăsita pentru intalnirea cu ID %', NEW.meetingId;
     END IF;
     RETURN NEW;
 END;

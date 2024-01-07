@@ -23,4 +23,4 @@ def connectDB():
 def endOperations(cursor,connection):
     print('End Operation')
     cursor.close()
-    connection.close()    
+    connection.close()
