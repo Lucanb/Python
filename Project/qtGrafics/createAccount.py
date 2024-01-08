@@ -26,6 +26,16 @@ class CreateAccount(QWidget):
         self.confirmPassword.setFixedWidth(200)
         self.confirmPassword.setEchoMode(QLineEdit.Password)
 
+        self.firstName = QLineEdit(self)
+        self.firstName.setPlaceholderText('First Name')
+        self.firstName.setFixedWidth(200)
+        self.firstName.setEchoMode(QLineEdit.Password)
+
+        self.lastName = QLineEdit(self)
+        self.lastName.setPlaceholderText('Last Name')
+        self.lastName.setFixedWidth(200)
+        self.lastName.setEchoMode(QLineEdit.Password)
+
         self.createAccountButton = QPushButton('Create Account', self)
         self.createAccountButton.clicked.connect(self.CreateAccButton)
 
@@ -34,6 +44,9 @@ class CreateAccount(QWidget):
         layout.addWidget(self.username)
         layout.addWidget(self.password)
         layout.addWidget(self.confirmPassword)
+        layout.addWidget(self.confirmPassword)
+        layout.addWidget(self.firstName)
+        layout.addWidget(self.lastName)
         layout.addWidget(self.createAccountButton)
         layout.addStretch(1)
         self.setLayout(layout)
@@ -44,10 +57,12 @@ class CreateAccount(QWidget):
         username = self.username.text()
         password = self.password.text()
         confirmPass = self.confirmPassword.text()
+        firstName = self.firstName.text()
+        lastName  = self.lastName.text()
         if confirmPass != password :
             msg.setText('pasword must be the same as confirm password')
         else :
-            isAccountValid = myAccount.CreateAccount(username,password,confirmPass)
+            isAccountValid = myAccount.CreateAccount(username,password,firstName,lastName)
             print("Username:", username)
             print("Password:", password)
             print("Confirmed Password",confirmPass)

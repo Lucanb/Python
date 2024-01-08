@@ -23,5 +23,6 @@ UNION
 SELECT m.meetingid, m.hour_begin, m.hour_end FROM meetingappointments m
 WHERE m.hostid = %s
 """
-
 addInvite = "INSERT INTO invitations (meetingid, personid) VALUES (%s, %s)"
+InvitationByNameAndIdMeet = "SELECT * FROM invitations WHERE meetingid = %s AND personid = %s"
+getMeetAfterId = "SELECT * FROM meetingAppointments WHERE meetingid = %s"

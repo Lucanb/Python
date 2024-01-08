@@ -2,7 +2,8 @@ from PyQt5.QtWidgets import (QApplication, QWidget, QLineEdit, QPushButton,
                              QVBoxLayout, QHBoxLayout,QScrollArea, QLabel, QMessageBox)
 import db.handler.meetings_maagement as meetings
 import db.handler.personsManagement as person
-class addMeetings(QWidget):
+
+class addPersonToMeet(QWidget):
     def __init__(self,username):
         super().__init__()
         self.hostName = username
@@ -15,21 +16,9 @@ class addMeetings(QWidget):
 
         layout = QVBoxLayout()
 
-        self.beginDate = QLineEdit(self)
-        self.beginDate.setPlaceholderText('Data de început (YYYY-MM-DD)')
-        layout.addWidget(self.beginDate)
-
-        self.beginTime = QLineEdit(self)
-        self.beginTime.setPlaceholderText('Ora de început (HH:MM:SS)')
-        layout.addWidget(self.beginTime)
-
-        self.endDate = QLineEdit(self)
-        self.endDate.setPlaceholderText('Data de sfarsit (YYYY-MM-DD)')
-        layout.addWidget(self.endDate)
-
-        self.endTime = QLineEdit(self)
-        self.endTime.setPlaceholderText('Ora de sfarsit (HH:MM:SS)')
-        layout.addWidget(self.endTime)
+        self.idMeet = QLineEdit(self)
+        self.idMeet.setPlaceholderText('Meet ID')
+        layout.addWidget(self.idMeet)
 
         scrollBar = QScrollArea(self)
         scrollBar.setWidgetResizable(True)
@@ -65,17 +54,27 @@ class addMeetings(QWidget):
 
 
     def submitData(self):
-        hour_begin = f"{self.beginDate.text()} {self.beginTime.text()}:00+03"
-        hour_end = f"{self.endDate.text()} {self.endTime.text()}:00+03"
+        meet_id = self.idMeet.text()
         usernames = [userInput.text() for userInput in self.userInputs if userInput.text()]
         user = person.PersonManagement()
         hostId = user.getUserId(self.hostName)
-        print('host_id -> getUserId : ',hostId)
-        meetMangement = meetings.MeetingManagement()
-        idMeet = meetMangement.createMeet(hostId,hour_begin,hour_end)
-        print('id-ul meet-ului este',idMeet)
-        for username in usernames:
-            userId = user.getUserId(username)
-            meetMangement.addInvitation(idMeet,userId)
-
-        QMessageBox.information(self, 'Informatie', 'Datele au fost trimise.')    
+        print('host_id -> getUserId:', hostId)
+        meetManagement = meetings.MeetingManagement()
+        rows_meet = meetManagement.getMeetAfterId(meet_id)
+        if not rows_meet:
+            QMessageBox.warning(self, 'Avertizare', 'Meet-ul ' + meet_id + ' nu exista')
+        else: 
+            print('id-ul meet-ului este', meet_id)
+            for username in usernames:
+                userId = user.getUserId(username)
+                if userId is not None:                
+                    rows = meetManagement.getInvitationByIdUserAndIdMeet(userId, meet_id)
+                    print(rows)
+                    if rows:
+                        QMessageBox.warning(self, 'Avertizare', 'Utilizatorul ' + username + ' are deja o invitație pentru acest eveniment.')
+                    else:
+                        meetManagement.addInvitation(meet_id, userId)
+                        QMessageBox.information(self, 'Informație', 'Datele au fost trimise.')
+                else:
+                    QMessageBox.warning(self, 'Avertizare', 'Utilizatorul ' + username + ' nu există în baza de date.')
+    

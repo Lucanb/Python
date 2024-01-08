@@ -8,7 +8,8 @@ create_table_accounts = """
         """
 create_table_persons = """
         CREATE TABLE personData (
-            personId INTEGER UNIQUE, 
+            personId INTEGER UNIQUE,
+            username VARCHAR(255) UNIQUE, 
             nume VARCHAR(255),
             prenume VARCHAR(255),
             FOREIGN KEY (personId) REFERENCES accountUsers(userId)

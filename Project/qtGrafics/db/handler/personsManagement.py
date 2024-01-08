@@ -16,11 +16,15 @@ class PersonManagement:
         self.cursor.execute(commands.deleteAccount, (UserId,))
         # conn.endOperations(self.cursor,self.connection)
 
-    def addUser(self,username, password,firstName,lastName):
-        self.cursor.execute(commands.insertAccounts, (username, password))
-        account_id = self.cursor.fetchone()[0]
-        self.cursor.execute(commands.insertUserData, (account_id, firstName, lastName))
-        # conn.endOperations(self.cursor,self.connection)
+    def addUser(self, username, password, firstName, lastName):
+        try:
+            self.cursor.execute(commands.insertAccounts, (username, password))
+            account_id = self.cursor.fetchone()[0]
+            self.cursor.execute(commands.insertUserData, (account_id, username, firstName, lastName))
+            self.connection.commit()
+            print("Utilizatorul a fost adăugat cu succes.")
+        except Exception as error_execComand:
+            print(f"Eroare la executarea comenzii pentru adăugarea utilizatorului: {error_execComand}")
     
     def updateUserDataName(self,UserId, firstName, lastName):
         self.cursor.execute(commands.UpdateUserData, (firstName, lastName, UserId))

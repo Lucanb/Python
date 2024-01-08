@@ -5,6 +5,7 @@ import ControlPanelButtons.AddPerson as person
 import ControlPanelButtons.showMeetTimeWindow as showMeetTimes
 import ControlPanelButtons.AllMeetsId as allMeetsId
 import ControlPanelButtons.addMeets as addNewMeet
+import ControlPanelButtons.addPersonToMeet as addPersToMeet
 class Window(QWidget):
     def __init__(self,username):
         super().__init__()
@@ -125,7 +126,7 @@ class Window(QWidget):
         self.addPerson.show()
         return
     
-    def addMeet(self): #!
+    def addMeet(self):
         self.addMeetWindow = addNewMeet.addMeetings(self.username)
         self.addMeetWindow.show()
         return
@@ -135,9 +136,9 @@ class Window(QWidget):
         self.addPerson.show()
         return 
     
-    def addPersonToMeet(self): #!
-        self.addPerson = person.AddPersonWindow()
-        self.addPerson.show()
+    def addPersonToMeet(self):
+        self.addPersonToMeetWindow = addPersToMeet.addPersonToMeet(self.username)
+        self.addPersonToMeetWindow.show()
         return
     
     def deletePersonMeet(self):

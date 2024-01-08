@@ -38,6 +38,7 @@ class LogIn(QWidget):
         layout.addWidget(self.username)
         layout.addWidget(self.password)
         layout.addWidget(self.loginButton)
+        layout.addWidget(self.createAccountButton)
         layout.addStretch(1)
         self.setLayout(layout)
 
