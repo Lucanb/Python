@@ -1,7 +1,7 @@
 
 selectIdMeet = "SELECT * FROM meetingAppointments WHERE hostId = %s"
 selectAllMeets = "SELECT * FROM meetingAppointments WHERE hour_begin >= %s AND hour_end <= %s"
-addMeet = "INSERT INTO meetingAppointments (hostId, hour_begin, hour_end) VALUES (%s, %s, %s) RETURNING meetingId"
+addMeet = "INSERT INTO meetingappointments (hostId, hour_begin, hour_end) VALUES (%s, %s, %s) RETURNING meetingid"
 deleteInviteID = "DELETE FROM invitations WHERE personId = %s"
 deleteMeetID = "DELETE FROM meetingAppointments WHERE meetingId = %s"
 deleteInviteMeetIDpersonID = "DELETE FROM invitations WHERE personId = %s AND meetingId = %s"
@@ -23,3 +23,5 @@ UNION
 SELECT m.meetingid, m.hour_begin, m.hour_end FROM meetingappointments m
 WHERE m.hostid = %s
 """
+
+addInvite = "INSERT INTO invitations (meetingid, personid) VALUES (%s, %s)"

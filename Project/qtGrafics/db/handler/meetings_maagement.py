@@ -18,7 +18,9 @@ class MeetingManagement:
 
     def createMeet(self,  creator_id, ora_begin, ora_end):
         self.cursor.execute(comands.addMeet, (creator_id, ora_begin, ora_end))
-        return self.cursor.fetchone()[0]
+        meetId = self.cursor.fetchone()[0]
+        # conn.endOperations(self.cursor,self.connection)
+        return meetId
 
     def deleteMeetAndInvitations(self,  meeting_id):
         self.cursor.execute(comands.deleteInviteID, (meeting_id,))
@@ -39,3 +41,7 @@ class MeetingManagement:
         self.cursor.execute(comands.allMeetInvById, (id,id))
         return self.cursor.fetchall()
         
+    def addInvitation(self,meetingId,personId):
+        self.cursor.execute(comands.addInvite,(meetingId,personId))
+        #conn.endOperations(self.cursor,self.connection)
+        # return self.cursor.fetchall()

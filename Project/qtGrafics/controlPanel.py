@@ -4,6 +4,7 @@ from datetime import datetime
 import ControlPanelButtons.AddPerson as person
 import ControlPanelButtons.showMeetTimeWindow as showMeetTimes
 import ControlPanelButtons.AllMeetsId as allMeetsId
+import ControlPanelButtons.addMeets as addNewMeet
 class Window(QWidget):
     def __init__(self,username):
         super().__init__()
@@ -109,7 +110,7 @@ class Window(QWidget):
         self.idMeets.selectTimes()
         return
     
-    def searchMeetHost(self):
+    def searchMeetHost(self): ###
         self.showAllMeetsWindow = person.AddPersonWindow()
         self.addPerson.show()
         return 
@@ -119,14 +120,14 @@ class Window(QWidget):
         self.addPerson.show()
         return
     
-    def importMeets(self):
+    def importMeets(self): ###
         self.addPerson = person.AddPersonWindow()
         self.addPerson.show()
         return
     
-    def addMeet(self):
-        self.addPerson = person.AddPersonWindow()
-        self.addPerson.show()
+    def addMeet(self): #!
+        self.addMeetWindow = addNewMeet.addMeetings(self.username)
+        self.addMeetWindow.show()
         return
     
     def searchPersons(self):
@@ -134,7 +135,7 @@ class Window(QWidget):
         self.addPerson.show()
         return 
     
-    def addPersonToMeet(self):
+    def addPersonToMeet(self): #!
         self.addPerson = person.AddPersonWindow()
         self.addPerson.show()
         return
