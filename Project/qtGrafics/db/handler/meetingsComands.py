@@ -15,3 +15,11 @@ allMeetInvites = """
     JOIN meetingAppointments m ON i.meetingId = m.meetingId
     WHERE m.hour_begin <= %s AND m.hour_end >= %s
 """
+allMeetInvById = """
+SELECT m.meetingid, m.hour_begin, m.hour_end FROM meetingappointments m
+JOIN invitations i ON m.meetingid = i.meetingid
+WHERE i.personid = %s
+UNION
+SELECT m.meetingid, m.hour_begin, m.hour_end FROM meetingappointments m
+WHERE m.hostid = %s
+"""

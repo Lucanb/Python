@@ -34,3 +34,8 @@ class MeetingManagement:
     def getInvitationsByTime(self,  specific_time):
         self.cursor.execute(comands.allMeetInvites, (specific_time, specific_time))
         return self.cursor.fetchall()
+    
+    def getMeetsInvitationsById(self, id):
+        self.cursor.execute(comands.allMeetInvById, (id,id))
+        return self.cursor.fetchall()
+        

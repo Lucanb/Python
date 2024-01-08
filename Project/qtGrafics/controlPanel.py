@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QGridLayout,QLab
 from datetime import datetime
 import ControlPanelButtons.AddPerson as person
 import ControlPanelButtons.showMeetTimeWindow as showMeetTimes
+import ControlPanelButtons.AllMeetsId as allMeetsId
 class Window(QWidget):
     def __init__(self,username):
         super().__init__()
@@ -104,12 +105,12 @@ class Window(QWidget):
         return
     
     def showAllMeets(self):
-        self.addPerson = person.AddPersonWindow()
-        self.addPerson.show()
+        self.idMeets = allMeetsId.MeetAfterId(self.username)
+        self.idMeets.selectTimes()
         return
     
     def searchMeetHost(self):
-        self.addPerson = person.AddPersonWindow()
+        self.showAllMeetsWindow = person.AddPersonWindow()
         self.addPerson.show()
         return 
     
