@@ -54,7 +54,7 @@ class LogIn(QWidget):
         if isAccount == True:
             print('User Loggend Successful')
             if not self.window:
-                self.window = control.Window()
+                self.window = control.Window(username)
             self.window.show()
             self.close() 
         else:
