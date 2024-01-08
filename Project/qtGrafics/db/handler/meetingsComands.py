@@ -26,3 +26,18 @@ WHERE m.hostid = %s
 addInvite = "INSERT INTO invitations (meetingid, personid) VALUES (%s, %s)"
 InvitationByNameAndIdMeet = "SELECT * FROM invitations WHERE meetingid = %s AND personid = %s"
 getMeetAfterId = "SELECT * FROM meetingAppointments WHERE meetingid = %s"
+
+getMeetYouInvited = """
+SELECT m.meetingid, m.hour_begin, m.hour_end
+FROM invitations i
+JOIN meetingappointments m ON i.meetingid = m.meetingid
+JOIN accountusers u ON i.personid = u.userid
+WHERE u.username = %s
+"""
+selectIdMeetV = "SELECT meetingid, hour_begin, hour_end FROM meetingAppointments WHERE hostId = %s"
+
+meetExists = "SELECT * FROM meetingAppointments WHERE meetingid = %s AND hostid = %s"
+
+invitationExists = "SELECT * FROM invitations WHERE meetingid = %s AND personid = %s"
+
+addMeetV = "INSERT INTO meetingappointments (meetingid,hostId, hour_begin, hour_end) VALUES (%s, %s, %s, %s) RETURNING meetingid"

@@ -6,6 +6,8 @@ import ControlPanelButtons.showMeetTimeWindow as showMeetTimes
 import ControlPanelButtons.AllMeetsId as allMeetsId
 import ControlPanelButtons.addMeets as addNewMeet
 import ControlPanelButtons.addPersonToMeet as addPersToMeet
+import exportCalendar as exports
+import importCalendar as imports
 class Window(QWidget):
     def __init__(self,username):
         super().__init__()
@@ -16,6 +18,7 @@ class Window(QWidget):
         self.addPersonToMeetWindow = None
         self.addMeetWindow = None
         self.showMeetTimeWindow = None
+        self.exports = None
 
     def initUI(self):
         self.setWindowTitle('Control Panel')
@@ -117,13 +120,14 @@ class Window(QWidget):
         return 
     
     def exportMeets(self):
-        self.addPerson = person.AddPersonWindow()
-        self.addPerson.show()
+        self.exports = exports.ExportCalendar(self.username)
+        self.exports.Export()
         return
     
-    def importMeets(self): ###
-        self.addPerson = person.AddPersonWindow()
-        self.addPerson.show()
+    def importMeets(self):
+        self.imports = imports.ImportCalendar(self.username)
+        self.imports.OpenFile()
+        self.imports.Import()
         return
     
     def addMeet(self):
