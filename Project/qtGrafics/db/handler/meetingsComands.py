@@ -39,3 +39,4 @@ invitationExists = "SELECT * FROM invitations WHERE meetingid = %s AND personid 
 addMeetV = "INSERT INTO meetingappointments (meetingid,hostId, hour_begin, hour_end) VALUES (%s, %s, %s, %s) RETURNING meetingid"
 existsMeetID = "SELECT * FROM meetingAppointments WHERE meetingid = %s"
 deleteInvMeetID = "DELETE FROM invitations WHERE meetingid = %s"
+searchInvitationIdUSer = "SELECT * FROM invitations WHERE personid = %s"

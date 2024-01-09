@@ -10,6 +10,7 @@ import ControlPanelButtons.ShowAllHostMeets as hostMeets
 import ControlPanelButtons.SearchPersons as searchPers
 import ControlPanelButtons.DeletePersonMeet as deletePersonFromMeet
 import ControlPanelButtons.deleteMeet as deletMeets
+import ControlPanelButtons.searchInvitationsWindow as searchInvWindow
 import exportCalendar as exports
 import importCalendar as imports
 
@@ -28,6 +29,7 @@ class Window(QWidget):
         self.searchPersWindow = None
         self.deletePersonWindowMeet = None
         self.deleteAmeetWindow = None
+        self.searchInvitationsWindow = None
 
     def initUI(self):
         self.setWindowTitle('Control Panel')
@@ -62,7 +64,7 @@ class Window(QWidget):
 
         lowerButtonHeight = 50
         lowerButtonWidth = 150
-        lowerButtonLabel = ["Logout","AccountSettings"]
+        lowerButtonLabel = ["AccountSettings"]
                 
         for i, label in enumerate(lowerButtonLabel):
             button = QPushButton(label, self)
@@ -103,8 +105,6 @@ class Window(QWidget):
             self.deleteMeet()
         elif button_text == "SearchInvitation":
             self.searchInvitation()
-        elif button_text == "Logout":
-            self.logout()
         elif button_text == "AccountSettings":
             self.accountSettings()
     
@@ -151,9 +151,7 @@ class Window(QWidget):
     
     def addPersonToMeet(self):
         self.addPersonToMeetWindow = addPersToMeet.addPersonToMeet(self.username)
-        self.addPersonToMeetWindow.show()
-        return
-    
+        self.addPersonToMeetconnect
     def deletePersonMeet(self):
         self.deletePersonWindowMeet = deletePersonFromMeet.DeletePersonWindow(self.username)
         self.deletePersonWindowMeet.show()
@@ -165,13 +163,8 @@ class Window(QWidget):
         return
     
     def searchInvitation(self): #
-        self.addPerson = person.AddPersonWindow()
-        self.addPerson.show()
-        return
-    
-    def logout(self): #
-        self.addPerson = person.AddPersonWindow()
-        self.addPerson.show()
+        self.searchInvitationsWindow = searchInvWindow.SearchInvitations()
+        self.searchInvitationsWindow.show()
         return
 
     def accountSettings(self): #

@@ -131,3 +131,7 @@ class MeetingManagement:
         except Exception as e:
             print("Error deleting invitation:", str(e))
             self.connection.rollback()
+    
+    def searchInvitaion(self,idUser):
+        self.cursor.execute(comands.getMeetYouInvited,(idUser,))
+        return self.cursor.fetchall()

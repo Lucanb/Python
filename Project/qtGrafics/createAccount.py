@@ -3,6 +3,9 @@ import db.handler.AccountsManagement as accounts
 from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPushButton,QHBoxLayout, QVBoxLayout,QMessageBox
 
 class CreateAccount(QWidget):
+    """
+    for test
+    """
     def __init__(self):
         super().__init__()
         self.initUI()

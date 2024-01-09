@@ -4,6 +4,7 @@ import db.handler.AccountsManagement as accounts
 from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPushButton,QHBoxLayout, QVBoxLayout,QMessageBox
 import controlPanel as control
 import createAccount as create
+import pydoc
 
 class LogIn(QWidget):
     
@@ -71,3 +72,5 @@ if __name__ == "__main__":
     loginWindow = LogIn()
     loginWindow.show()
     sys.exit(app.exec_())
+
+    
