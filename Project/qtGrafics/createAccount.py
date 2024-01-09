@@ -29,12 +29,10 @@ class CreateAccount(QWidget):
         self.firstName = QLineEdit(self)
         self.firstName.setPlaceholderText('First Name')
         self.firstName.setFixedWidth(200)
-        self.firstName.setEchoMode(QLineEdit.Password)
 
         self.lastName = QLineEdit(self)
         self.lastName.setPlaceholderText('Last Name')
         self.lastName.setFixedWidth(200)
-        self.lastName.setEchoMode(QLineEdit.Password)
 
         self.createAccountButton = QPushButton('Create Account', self)
         self.createAccountButton.clicked.connect(self.CreateAccButton)

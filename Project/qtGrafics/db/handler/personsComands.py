@@ -8,3 +8,4 @@ insertUserData = "INSERT INTO persondata (personid, username, nume, prenume) VAL
 UpdateUserData = "UPDATE persondata SET nume = %s, prenume = %s WHERE personid = %s"
 allPersonsAfterData = "SELECT * FROM persondata WHERE nume = %s OR prenume = %s"
 getPersonId = "SELECT userid FROM accountusers WHERE username = %s"
+searchPerson = "SELECT * FROM persondata WHERE nume LIKE %s OR prenume LIKE %s ORDER BY nume, prenume"

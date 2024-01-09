@@ -6,8 +6,13 @@ import ControlPanelButtons.showMeetTimeWindow as showMeetTimes
 import ControlPanelButtons.AllMeetsId as allMeetsId
 import ControlPanelButtons.addMeets as addNewMeet
 import ControlPanelButtons.addPersonToMeet as addPersToMeet
+import ControlPanelButtons.ShowAllHostMeets as hostMeets
+import ControlPanelButtons.SearchPersons as searchPers
+import ControlPanelButtons.DeletePersonMeet as deletePersonFromMeet
+import ControlPanelButtons.deleteMeet as deletMeets
 import exportCalendar as exports
 import importCalendar as imports
+
 class Window(QWidget):
     def __init__(self,username):
         super().__init__()
@@ -19,6 +24,10 @@ class Window(QWidget):
         self.addMeetWindow = None
         self.showMeetTimeWindow = None
         self.exports = None
+        self.hostMeet = None
+        self.searchPersWindow = None
+        self.deletePersonWindowMeet = None
+        self.deleteAmeetWindow = None
 
     def initUI(self):
         self.setWindowTitle('Control Panel')
@@ -114,9 +123,9 @@ class Window(QWidget):
         self.idMeets.selectTimes()
         return
     
-    def searchMeetHost(self): ###
-        self.showAllMeetsWindow = person.AddPersonWindow()
-        self.addPerson.show()
+    def searchMeetHost(self):
+        self.showAllMeetsWindow = hostMeets.MeetHostAfterId(self.username)
+        self.showAllMeetsWindow.selectTimes()
         return 
     
     def exportMeets(self):
@@ -135,9 +144,9 @@ class Window(QWidget):
         self.addMeetWindow.show()
         return
     
-    def searchPersons(self):
-        self.addPerson = person.AddPersonWindow()
-        self.addPerson.show()
+    def searchPersons(self): #de vazut
+        self.searchPersWindow = searchPers.SearchPersons()
+        self.searchPersWindow.show()
         return 
     
     def addPersonToMeet(self):
@@ -146,26 +155,26 @@ class Window(QWidget):
         return
     
     def deletePersonMeet(self):
+        self.deletePersonWindowMeet = deletePersonFromMeet.DeletePersonWindow(self.username)
+        self.deletePersonWindowMeet.show()
+        return
+    
+    def deleteMeet(self): 
+        self.deleteAmeetWindow = deletMeets.DeleteMeet(self.username)
+        self.deleteAmeetWindow.show()
+        return
+    
+    def searchInvitation(self): #
         self.addPerson = person.AddPersonWindow()
         self.addPerson.show()
         return
     
-    def deleteMeet(self):
-        self.addPerson = person.AddPersonWindow()
-        self.addPerson.show()
-        return
-    
-    def searchInvitation(self):
-        self.addPerson = person.AddPersonWindow()
-        self.addPerson.show()
-        return
-    
-    def logout(self):
+    def logout(self): #
         self.addPerson = person.AddPersonWindow()
         self.addPerson.show()
         return
 
-    def accountSettings(self):
+    def accountSettings(self): #
         self.addPerson = person.AddPersonWindow()
         self.addPerson.show()
         return                                   

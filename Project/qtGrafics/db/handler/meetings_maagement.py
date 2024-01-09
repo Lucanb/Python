@@ -44,6 +44,7 @@ class MeetingManagement:
         try:
             self.cursor.execute(comands.deleteInviteMeetIDpersonID, (meeting_id, person_id))
             self.connection.commit()
+            print('delete done')
         except Exception as e:
             print("Error deleting invitation:", str(e))
             self.connection.rollback()
@@ -63,7 +64,6 @@ class MeetingManagement:
     def getInvitationByIdUserAndIdMeet(self,idUser,idMeet):
             self.cursor.execute(comands.InvitationByNameAndIdMeet, (idUser, idMeet))
             return self.cursor.fetchall()
-
         
     def addInvitation(self, meetingId, personId):
         try:
@@ -108,4 +108,26 @@ class MeetingManagement:
         except Exception as e:
             print("Error creating meet:", str(e))
             self.connection.rollback()
-            return None        
+            return None
+    
+    def invitationExistsMeetID(self,meetID):
+        self.cursor.execute(comands.existsMeetID,(meetID,))
+        return self.cursor.fetchall()
+    
+    def deleteInvitationMeetID(self,meetID):
+        try:
+            self.cursor.execute(comands.deleteInvMeetID,(meetID,))
+            self.connection.commit()
+            print('delete done')
+        except Exception as e:
+            print("Error deleting invitation:", str(e))
+            self.connection.rollback()
+    
+    def deleteMeetJustID(self,meetID):
+        try:
+            self.cursor.execute(comands.deleteMeetID,(meetID,))
+            self.connection.commit()
+            print('delete done')
+        except Exception as e:
+            print("Error deleting invitation:", str(e))
+            self.connection.rollback()

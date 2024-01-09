@@ -41,3 +41,7 @@ class PersonManagement:
         else:
             return None
     
+    def searchPerson(self,firstName,lastName):
+        self.cursor.execute(commands.searchPerson, (firstName, lastName))
+        return self.cursor.fetchall()
+    

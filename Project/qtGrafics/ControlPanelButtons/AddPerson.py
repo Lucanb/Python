@@ -24,12 +24,10 @@ class AddPersonWindow(QWidget):
 
         self.firstnameLineEdit = QLineEdit(self)
         self.firstnameLineEdit.setPlaceholderText('FirstName')
-        self.firstnameLineEdit.setEchoMode(QLineEdit.Password)
         layout.addWidget(self.firstnameLineEdit)
 
         self.lastnameLineEdit = QLineEdit(self)
         self.lastnameLineEdit.setPlaceholderText('LastName')
-        self.lastnameLineEdit.setEchoMode(QLineEdit.Password)
         layout.addWidget(self.lastnameLineEdit)
 
         self.okButton = QPushButton('OK', self)
