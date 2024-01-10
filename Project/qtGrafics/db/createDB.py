@@ -2,6 +2,13 @@ import psycopg2
 
 
 def create_my_dataBase():
+    """
+    This function has the role to creeate a connection
+    and then create a data base for my application
+
+    Parameters
+    ----------
+    """
     connection = psycopg2.connect(
         database = "postgres",
         user = "postgres",
