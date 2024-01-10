@@ -166,13 +166,19 @@ class addMeetings(QWidget):
         hour_end = f"{self.endDate.text()} {self.endTime.text()}:00+02"
         usernames = [userInput.text() for userInput in self.userInputs if userInput.text()]
         user = person.PersonManagement()
-        hostId = user.getUserId(self.hostName)
-        print('host_id -> getUserId : ',hostId)
-        meetMangement = meetings.MeetingManagement()
-        idMeet = meetMangement.createMeet(hostId,hour_begin,hour_end)
-        print('id-ul meet-ului este',idMeet)
-        for username in usernames:
-            userId = user.getUserId(username)
-            meetMangement.addInvitation(idMeet,userId)
-
+        try:        
+            hostId = user.getUserId(self.hostName)
+            print('host_id -> getUserId : ',hostId)
+            meetMangement = meetings.MeetingManagement()
+            idMeet = meetMangement.createMeet(hostId,hour_begin,hour_end)
+            print('id-ul meet-ului este',idMeet)
+            for username in usernames:
+                userId = user.getUserId(username)
+                if userId :
+                    meetMangement.addInvitation(idMeet,userId)
+                else:
+                    QMessageBox.information(self, 'No user added', f'Acest username nu exista {username}')
+        except Exception as error:
+            QMessageBox.warning(self, 'Eroare', 'Eroare la creearea meeting-ului')
+            print(f"Error: {error}") 
         QMessageBox.information(self, 'Informatie', 'Datele au fost trimise.')    

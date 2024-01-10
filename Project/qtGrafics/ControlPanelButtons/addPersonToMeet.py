@@ -150,24 +150,28 @@ class addPersonToMeet(QWidget):
         meet_id = self.idMeet.text()
         usernames = [userInput.text() for userInput in self.userInputs if userInput.text()]
         user = person.PersonManagement()
-        hostId = user.getUserId(self.hostName)
-        print('host_id -> getUserId:', hostId)
-        meetManagement = meetings.MeetingManagement()
-        rows_meet = meetManagement.getMeetAfterId(meet_id)
-        if not rows_meet:
-            QMessageBox.warning(self, 'Avertizare', 'Meet-ul ' + meet_id + ' nu exista')
-        else: 
-            print('id-ul meet-ului este', meet_id)
-            for username in usernames:
-                userId = user.getUserId(username)
-                if userId is not None:                
-                    rows = meetManagement.getInvitationByIdUserAndIdMeet(userId, meet_id)
-                    print(rows)
-                    if rows:
-                        QMessageBox.warning(self, 'Avertizare', 'Utilizatorul ' + username + ' are deja o invitație pentru acest eveniment.')
+        try:
+            hostId = user.getUserId(self.hostName)
+            print('host_id -> getUserId:', hostId)
+            meetManagement = meetings.MeetingManagement()
+            rows_meet = meetManagement.getMeetAfterId(meet_id)
+            if not rows_meet:
+                QMessageBox.warning(self, 'Avertizare', 'Meet-ul ' + meet_id + ' nu exista')
+            else: 
+                print('id-ul meet-ului este', meet_id)
+                for username in usernames:
+                    userId = user.getUserId(username)
+                    if userId is not None:                
+                        rows = meetManagement.getInvitationByIdUserAndIdMeet(userId, meet_id)
+                        print(rows)
+                        if rows:
+                            QMessageBox.warning(self, 'Avertizare', 'Utilizatorul ' + username + ' are deja o invitație pentru acest eveniment.')
+                        else:
+                            meetManagement.addInvitation(meet_id, userId)
+                            QMessageBox.information(self, 'Informație', 'Datele au fost trimise.')
                     else:
-                        meetManagement.addInvitation(meet_id, userId)
-                        QMessageBox.information(self, 'Informație', 'Datele au fost trimise.')
-                else:
-                    QMessageBox.warning(self, 'Avertizare', 'Utilizatorul ' + username + ' nu există în baza de date.')
+                        QMessageBox.warning(self, 'Avertizare', 'Utilizatorul ' + username + ' nu există în baza de date.')
+        except Exception as e:
+            QMessageBox.warning(self, 'Error', 'Failed to add person')
+            print(f"Error: {e}")
     
