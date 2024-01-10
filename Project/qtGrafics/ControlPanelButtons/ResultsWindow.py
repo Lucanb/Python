@@ -58,8 +58,8 @@ class ResultsWindow(QWidget):
             parseResult = []
             for element in result:
                 if isinstance(element, datetime):
-                    formatted_datetime = element.strftime("%H:%M:%S%z")
-                    parseResult.append(formatted_datetime)
+                    parsing_datetime = element.strftime("%H:%M:%S%z")
+                    parseResult.append(parsing_datetime)
                 else:
                     parseResult.append(str(element))
             print(parseResult)
