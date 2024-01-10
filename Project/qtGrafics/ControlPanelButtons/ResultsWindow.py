@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout, QScrollArea, QApplication
+from datetime import datetime, timedelta
 class ResultsWindow(QWidget):
     """
     A class that represents a result window and it is used for
@@ -53,7 +54,16 @@ class ResultsWindow(QWidget):
         contentLayout = QVBoxLayout(content)
 
         for result in self.results:
-            label = QLabel(str(result), content)
+            num_elements = len(result)
+            parseResult = []
+            for element in result:
+                if isinstance(element, datetime):
+                    formatted_datetime = element.strftime("%H:%M:%S%z")
+                    parseResult.append(formatted_datetime)
+                else:
+                    parseResult.append(str(element))
+            print(parseResult)
+            label = QLabel(str(parseResult), content)
             contentLayout.addWidget(label)
 
         content.setLayout(contentLayout)

@@ -100,8 +100,8 @@ class MeetTimes(QWidget):
         endDate = self.endDate.text()
         endTime = self.endTime.text()
 
-        hour_begin = f"{startDate} {startTime}:00+03"
-        hour_end = f"{endDate} {endTime}:00+03"
+        hour_begin = f"{startDate} {startTime}:00+02"
+        hour_end = f"{endDate} {endTime}:00+02"
 
         meets = managementMeet.MeetingManagement()
         try:

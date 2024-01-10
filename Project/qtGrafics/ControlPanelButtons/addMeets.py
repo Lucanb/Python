@@ -162,8 +162,8 @@ class addMeetings(QWidget):
         ----------
         """
 
-        hour_begin = f"{self.beginDate.text()} {self.beginTime.text()}:00+03"
-        hour_end = f"{self.endDate.text()} {self.endTime.text()}:00+03"
+        hour_begin = f"{self.beginDate.text()} {self.beginTime.text()}:00+02"
+        hour_end = f"{self.endDate.text()} {self.endTime.text()}:00+02"
         usernames = [userInput.text() for userInput in self.userInputs if userInput.text()]
         user = person.PersonManagement()
         hostId = user.getUserId(self.hostName)
